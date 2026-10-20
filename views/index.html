@@ -13,15 +13,12 @@ $def with (historial, pagina_actual)
         <div class="card shadow-sm border-0 mb-4">
             <div class="card-body p-4">
                 <h2 class="card-title text-center text-primary mb-2">Navegador Web</h2>
-                <p class="text-center text-muted mb-4">Estructura de datos: <strong>Pila (Stack - LIFO)</strong></p>
 
-                <!-- 3. Mostrar la página actual -->
                 <div class="alert alert-primary mb-4" role="alert">
                     <div class="small text-uppercase fw-bold text-secondary">Página actual:</div>
                     <div class="fs-5 fw-bold text-primary">$pagina_actual</div>
                 </div>
 
-                <!-- 1. Visitar una página web -->
                 <form method="POST" action="/" class="mb-3">
                     <input type="hidden" name="accion" value="visitar">
                     <div class="input-group">
@@ -30,13 +27,12 @@ $def with (historial, pagina_actual)
                     </div>
                 </form>
 
-                <!-- 2. Regresar a la página anterior y 5. Eliminar historial -->
                 <div class="row g-2 mb-4">
                     <div class="col-6">
                         <form method="POST" action="/">
                             <input type="hidden" name="accion" value="regresar">
                             <button class="btn btn-outline-primary w-100" type="submit">
-                                &larr; Regresar página
+                                <--   Regresar página
                             </button>
                         </form>
                     </div>
@@ -50,14 +46,9 @@ $def with (historial, pagina_actual)
                     </div>
                 </div>
 
-                <!-- 4. Mostrar historial en orden descendente -->
-                <h5 class="border-bottom pb-2 mb-3">Historial de páginas visitadas (LIFO)</h5>
+                <h5 class="border-bottom pb-2 mb-3">Historial de páginas visitadas</h5>
 
-                $if len(historial) == 0:
-                    <div class="alert alert-secondary text-center mb-0">
-                        El historial está vacío.
-                    </div>
-                $else:
+                $if len(historial) > 0:
                     <ol class="list-group list-group-numbered">
                     $for pagina in historial:
                         <li class="list-group-item d-flex justify-content-between align-items-center">
